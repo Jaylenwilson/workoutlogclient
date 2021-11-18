@@ -6,6 +6,7 @@ const Login = (props) => {
     const [password, setPassword] = useState('');
 
     const handleSubmit = (event) => {
+        event.preventDefault();
         fetch('http://localhost:3000/user/login', {
             method: 'POST',
             body: JSON.stringify({ user: { userName: username, password: password } }),
@@ -23,7 +24,7 @@ const Login = (props) => {
             <h1>Login</h1>
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
-                    <Input onChange={(e) => setUsername(e.target.value)} name='username' value={username} />
+                    <Input onChange={(e) => setUsername(e.target.value)} name='userName' value={username} />
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor='password'>Password</Label>
